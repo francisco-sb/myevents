@@ -10,14 +10,14 @@ public class User {
     private String name;
     private String lastName;
     private String phone;
-    private String mail;
+    private String email;
     private String password;
 
-    public User(String name, String lastName, String phone, String mail, String password) {
+    public User(String name, String lastName, String phone, String email, String password) {
         this.name = name;
         this.lastName = lastName;
         this.phone = phone;
-        this.mail = mail;
+        this.email = email;
         this.password = password;
     }
 
@@ -45,12 +45,12 @@ public class User {
         this.phone = phone;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
