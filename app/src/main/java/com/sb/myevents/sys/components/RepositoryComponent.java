@@ -3,6 +3,7 @@ package com.sb.myevents.sys.components;
 import com.sb.myevents.sys.modules.RepositoryModule;
 import com.sb.myevents.ui.main.MainViewModel;
 import com.sb.myevents.ui.main.event.EventViewModel;
+import com.sb.myevents.ui.main.login.UserViewModel;
 import com.sb.myevents.ui.main.myevents.MyEventsViewModel;
 import com.sb.myevents.ui.main.login.LoginViewModel;
 
@@ -22,6 +23,8 @@ public interface RepositoryComponent {
     void inject(MainViewModel viewModel);
 
     void inject(LoginViewModel viewModel);
+
+    void inject(UserViewModel viewModel);
 
     void inject(MyEventsViewModel viewModel);
 

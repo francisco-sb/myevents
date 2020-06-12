@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.sb.myevents.ui.main.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_myEventsFragment"
+            app:destination="@id/myEventsFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myEventsFragment"
+        android:name="com.sb.myevents.ui.main.myevents.MyEventsFragment"
+        android:label="my_events_fragment"
+        tools:layout="@layout/my_events_fragment" >
+        <action
+            android:id="@+id/action_myEventsFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.sb.myevents.ui.main.login.UserFragment"
+        android:label="UserFragment" />
+
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.sb.myevents.ui.main.event.EventFragment"
+        android:label="EventFragment" />
+
+</navigation>

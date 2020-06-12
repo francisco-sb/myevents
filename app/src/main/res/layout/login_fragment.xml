@@ -1,13 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme.NoActionBar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.login.LoginFragment">
+    android:layout_height="match_parent">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/app_name_textView"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Login" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@id/login_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/login_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintBottom_toTopOf="@id/register_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_name_textView">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/email_text"
+            app:endIconMode="clear_text"
+            app:startIconContentDescription="@string/email_text"
+            app:startIconDrawable="@drawable/ic_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/password_text"
+            app:endIconMode="password_toggle"
+            app:startIconContentDescription="@string/password_text"
+            app:startIconDrawable="@drawable/ic_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sign_in_button"
+            style="@style/TextAppearance.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/sign_in_text"
+            android:textColor="@color/design_default_color_on_primary" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/register_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="28dp"
+        android:gravity="center"
+        android:text="@string/register_text"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

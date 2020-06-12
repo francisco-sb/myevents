@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">My Events</string>
+
+    <!-- LoginFragment -->
+    <string name="user_text">User</string>
+    <string name="password_text">Password</string>
+    <string name="sign_in_text">Sign In</string>
+    <string name="register_text">Register</string>
+
+    <!-- UserFragment -->
+    <string name="user_name_text">Name</string>
+    <string name="lastname_text">Lastname</string>
+    <string name="phone_text">Phone</string>
+    <string name="email_text">Email</string>
+
+    <!-- EventFragment -->
+    <string name="event_name_text">Name Event</string>
+    <string name="place_text">Place</string>
+    <string name="date_text">Date</string>
+    <string name="time_text">Time</string>
+    <string name="date_default_text">mm / dd / yyyy</string>
+    <string name="time_default_text">- - : - -</string>
+    <string name="details_subtitle">Details</string>
+    <string name="save_changes_button">Save changes</string>
+
 </resources>
