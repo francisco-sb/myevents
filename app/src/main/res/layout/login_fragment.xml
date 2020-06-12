@@ -4,6 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/app_name_textView"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/login_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:gravity="center"
+        android:text="@string/app_name" />
+
     <LinearLayout
         android:id="@+id/login_container"
         android:layout_width="match_parent"
@@ -13,27 +26,18 @@
         app:layout_constraintBottom_toTopOf="@id/register_textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/TextAppearance.MaterialComponents.Headline5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="24dp"
-            android:gravity="center"
-            android:text="@string/app_name" />
+        app:layout_constraintTop_toBottomOf="@id/app_name_textView">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:hint="@string/user_text"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/email_text"
             app:endIconMode="clear_text"
-            app:startIconContentDescription="@string/user_text"
-            app:startIconDrawable="@drawable/ic_user">
+            app:startIconContentDescription="@string/email_text"
+            app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -45,7 +49,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="16dp"
             android:hint="@string/password_text"
             app:endIconMode="password_toggle"
             app:startIconContentDescription="@string/password_text"
@@ -62,7 +68,10 @@
             style="@style/TextAppearance.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/sign_in_text"
             android:textColor="@color/design_default_color_on_primary" />
