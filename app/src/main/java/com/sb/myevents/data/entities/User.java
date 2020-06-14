@@ -13,10 +13,19 @@ public class User {
     private String email;
     private String password;
 
+    public User() {
+        // Default constructor
+    }
+
     public User(String name, String lastName, String phone, String email, String password) {
         this.name = name;
         this.lastName = lastName;
         this.phone = phone;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }

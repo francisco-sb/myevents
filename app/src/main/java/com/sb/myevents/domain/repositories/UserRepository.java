@@ -3,6 +3,8 @@ package com.sb.myevents.domain.repositories;
 import androidx.lifecycle.Observer;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.sb.myevents.data.entities.User;
 import com.sb.myevents.sys.util.AppExecutors;
 import com.sb.myevents.ui.MainApp;
@@ -17,10 +19,16 @@ public class UserRepository {
     private AppExecutors executors;
 
     private FirebaseAuth auth;
+    private DatabaseReference databaseReference;
+
+    private static final String USER = "user";
 
     public UserRepository() {
         executors = MainApp.utilComponent.getAppExecutors();
+
         auth = FirebaseAuth.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference(USER);
     }
 
     public void isUserSigned(Observer<Object> observer) {
@@ -55,6 +63,15 @@ public class UserRepository {
                 // If sign in fails, display a message to the user.
                 observer.onChanged(null);
             }
+        });
+    }
+
+    public void saveUser(User user) {
+        executors.networkIO().execute(() -> {
+            String keyId = databaseReference.push().getKey();
+
+            assert keyId != null;
+            databaseReference.child(keyId).setValue(user);
         });
     }
 }

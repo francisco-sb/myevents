@@ -3,6 +3,7 @@ package com.sb.myevents.sys.components;
 import com.sb.myevents.sys.modules.ViewModelModule;
 import com.sb.myevents.ui.main.MainActivity;
 import com.sb.myevents.ui.main.event.EventFragment;
+import com.sb.myevents.ui.main.login.UserFragment;
 import com.sb.myevents.ui.main.myevents.MyEventsFragment;
 import com.sb.myevents.ui.main.login.LoginFragment;
 
@@ -22,6 +23,8 @@ public interface ViewModelComponent {
     void inject(MainActivity view);
 
     void inject(LoginFragment view);
+
+    void inject(UserFragment view);
 
     void inject(MyEventsFragment view);
 

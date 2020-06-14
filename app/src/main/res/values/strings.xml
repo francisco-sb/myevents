@@ -25,7 +25,14 @@
 
     <!-- Messages -->
     <string name="auth_failed_message">Authentication failed!</string>
+    <string name="user_not_created_message">User creation failed, try again</string>
     <string name="user_created_message">You are registered now!</string>
     <string name="event_created_message">Event created</string>
     <string name="empty_string_message">Your email or password is empty</string>
+    <string name="fields_required_message">All fields are required!</string>
+    <string name="session_finalized_message">Session finalized!</string>
+
+    <!-- Menu -->
+    <string name="sign_out_menu">Sign out</string>
+    <string name="add_event_menu">Add event</string>
 </resources>
