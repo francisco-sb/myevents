@@ -23,4 +23,9 @@
     <string name="details_subtitle">Details</string>
     <string name="save_changes_button">Save changes</string>
 
+    <!-- Messages -->
+    <string name="auth_failed_message">Authentication failed!</string>
+    <string name="user_created_message">You are registered now!</string>
+    <string name="event_created_message">Event created</string>
+    <string name="empty_string_message">Your email or password is empty</string>
 </resources>
