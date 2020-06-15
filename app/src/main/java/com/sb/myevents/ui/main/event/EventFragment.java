@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -35,7 +33,8 @@ public class EventFragment extends Fragment {
     //endregion
 
     //region Views
-    private MaterialTextView dateTextView, timeTextView;
+    private MaterialTextView dateTextView;
+    private MaterialTextView timeTextView;
     //endregion
 
     //region Calendar - Time
@@ -45,12 +44,12 @@ public class EventFragment extends Fragment {
 
     private final Calendar c = Calendar.getInstance();
 
-    private final int month = c.get(Calendar.MONTH);
-    private final int day = c.get(Calendar.DAY_OF_MONTH);
-    private final int year = c.get(Calendar.YEAR);
+    private final int monthValue = c.get(Calendar.MONTH);
+    private final int dayValue = c.get(Calendar.DAY_OF_MONTH);
+    private final int yearValue = c.get(Calendar.YEAR);
 
-    private final int hour = c.get(Calendar.HOUR_OF_DAY);
-    private final int minute = c.get(Calendar.MINUTE);
+    private final int hourValue = c.get(Calendar.HOUR_OF_DAY);
+    private final int minuteValue = c.get(Calendar.MINUTE);
     //endregion
 
     @Override
@@ -107,7 +106,7 @@ public class EventFragment extends Fragment {
 
             String date = formatDay + SLASH + formatMonth + SLASH + year;
             dateTextView.setText(date);
-        }, year, month, day);
+        }, yearValue, monthValue, dayValue);
         getDate.show();
 
     }
@@ -125,7 +124,7 @@ public class EventFragment extends Fragment {
             }
             String time = formatHour + COLON + formatMinute + " " + amPm;
             timeTextView.setText(time);
-        }, hour, minute, false);
+        }, hourValue, minuteValue, false);
 
         getTime.show();
     }
