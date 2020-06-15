@@ -49,6 +49,8 @@ public class LoginFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.login_fragment, container, false);
 
+        Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).hide();
+
         MaterialTextView registerButton = rootView.findViewById(R.id.register_textView);
         MaterialButton signInButton = rootView.findViewById(R.id.sign_in_button);
 

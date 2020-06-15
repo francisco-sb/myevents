@@ -40,10 +40,13 @@ public class MainActivity extends AppCompatActivity {
         setupNavigation();
     }
 
+    //region:: PRIVATE METHODS
     private void setupNavigation() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_container);
     }
+    //endregion
 
+    //region:: PUBLIC METHODS
     public void navigateTo(String tag) {
         if (NEW_USER.equals(tag)) {
             navController.navigate(R.id.userFragment);
@@ -55,4 +58,5 @@ public class MainActivity extends AppCompatActivity {
             navController.navigate(R.id.loginFragment);
         }
     }
+    //endregion
 }

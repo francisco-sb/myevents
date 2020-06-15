@@ -44,6 +44,8 @@ public class UserFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.user_fragment, container, false);
 
+        Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).show();
+
         TextInputEditText nameEditText = rootView.findViewById(R.id.name_editText);
         TextInputEditText lastnameEditText = rootView.findViewById(R.id.lastname_editText);
         TextInputEditText phoneEditText = rootView.findViewById(R.id.phone_editText);

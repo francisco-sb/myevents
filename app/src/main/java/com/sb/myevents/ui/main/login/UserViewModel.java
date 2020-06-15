@@ -38,7 +38,6 @@ public class UserViewModel extends ViewModel {
             User user = new User(name, lastname, phone, email, pass);
 
             repository.createUser(user, this::onSignUp);
-            repository.saveUser(user);
         } else {
             onSignUpFailed.postValue(resourceProvider.getString(R.string.fields_required_message));
         }
@@ -46,10 +45,11 @@ public class UserViewModel extends ViewModel {
 
     //region:: REFERENCE METHODS
     private void onSignUp(Object o) {
-        if (o instanceof FirebaseUser)
+        if (o instanceof FirebaseUser) {
             onSignUpSuccessful.postValue(resourceProvider.getString(R.string.user_created_message));
-        else
+        } else {
             onSignUpFailed.postValue(resourceProvider.getString(R.string.user_not_created_message));
+        }
     }
     //endregion
 
