@@ -21,14 +21,14 @@ public class UserRepository {
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
 
-    private static final String USER = "user";
+    private static final String USERS = "users";
 
     public UserRepository() {
         executors = MainApp.utilComponent.getAppExecutors();
 
         auth = FirebaseAuth.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference(USER);
+        databaseReference = database.getReference().child(USERS);
     }
 
     public void isUserSigned(Observer<Object> observer) {
@@ -47,6 +47,7 @@ public class UserRepository {
             if (task.isSuccessful()) {
                 // Sign in success, update UI with the signed-in user's information
                 observer.onChanged(auth.getCurrentUser());
+                saveUser(user);
             } else {
                 // If sign in fails, display a message to the user.
                 observer.onChanged(null);
@@ -66,7 +67,7 @@ public class UserRepository {
         });
     }
 
-    public void saveUser(User user) {
+    private void saveUser(User user) {
         executors.networkIO().execute(() -> {
             String keyId = databaseReference.push().getKey();
 
