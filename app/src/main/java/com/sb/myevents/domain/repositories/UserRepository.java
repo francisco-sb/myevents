@@ -3,6 +3,7 @@ package com.sb.myevents.domain.repositories;
 import androidx.lifecycle.Observer;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.sb.myevents.data.entities.User;
@@ -21,14 +22,12 @@ public class UserRepository {
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
 
-    private static final String USERS = "users";
-
     public UserRepository() {
         executors = MainApp.utilComponent.getAppExecutors();
 
         auth = FirebaseAuth.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference().child(USERS);
+        databaseReference = database.getReference().child("users");
     }
 
     public void isUserSigned(Observer<Object> observer) {
@@ -46,8 +45,11 @@ public class UserRepository {
         auth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword()).addOnCompleteListener(executors.networkIO(), task -> {
             if (task.isSuccessful()) {
                 // Sign in success, update UI with the signed-in user's information
-                observer.onChanged(auth.getCurrentUser());
-                saveUser(user);
+                FirebaseUser firebaseUser = auth.getCurrentUser();
+                observer.onChanged(firebaseUser);
+
+                assert firebaseUser != null;
+                saveUser(user, firebaseUser.getUid());
             } else {
                 // If sign in fails, display a message to the user.
                 observer.onChanged(null);
@@ -67,12 +69,7 @@ public class UserRepository {
         });
     }
 
-    private void saveUser(User user) {
-        executors.networkIO().execute(() -> {
-            String keyId = databaseReference.push().getKey();
-
-            assert keyId != null;
-            databaseReference.child(keyId).setValue(user);
-        });
+    private void saveUser(User user, String uid) {
+        executors.networkIO().execute(() -> databaseReference.child(uid).setValue(user));
     }
 }
