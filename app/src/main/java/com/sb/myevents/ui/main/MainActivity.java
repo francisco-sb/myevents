@@ -51,10 +51,12 @@ public class MainActivity extends AppCompatActivity {
         if (NEW_USER.equals(tag)) {
             navController.navigate(R.id.userFragment);
         } else if (MY_EVENTS.equals(tag)) {
+            navController.setGraph(R.navigation.authenticated_navigation);
             navController.navigate(R.id.myEventsFragment);
         } else if ((EVENT.equals(tag))) {
             navController.navigate(R.id.eventFragment);
         } else if (LOGIN.equals(tag)) {
+            navController.setGraph(R.navigation.main_navigation);
             navController.navigate(R.id.loginFragment);
         }
     }

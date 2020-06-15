@@ -13,16 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_userFragment"
             app:destination="@id/userFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/myEventsFragment"
-        android:name="com.sb.myevents.ui.main.myevents.MyEventsFragment"
-        android:label="my_events_fragment"
-        tools:layout="@layout/my_events_fragment" >
         <action
-            android:id="@+id/action_myEventsFragment_to_eventFragment"
-            app:destination="@id/eventFragment" />
+            android:id="@+id/action_loginFragment_to_authenticated_navigation"
+            app:destination="@id/authenticated_navigation" />
     </fragment>
 
     <fragment
@@ -31,10 +24,6 @@
         android:label="UserFragment"
         tools:layout="@layout/user_fragment"/>
 
-    <fragment
-        android:id="@+id/eventFragment"
-        android:name="com.sb.myevents.ui.main.event.EventFragment"
-        android:label="EventFragment"
-        tools:layout="@layout/event_fragment"/>
+    <include app:graph="@navigation/authenticated_navigation" />
 
 </navigation>
