@@ -31,8 +31,13 @@
     <string name="empty_string_message">Your email or password is empty</string>
     <string name="fields_required_message">All fields are required!</string>
     <string name="session_finalized_message">Session finalized!</string>
+    <string name="database_error_message">Problem with Firebase</string>
 
     <!-- Menu -->
     <string name="sign_out_menu">Sign out</string>
     <string name="add_event_menu">Add event</string>
+
+    <!-- Event item -->
+    <string name="title_item">Title</string>
+    <string name="subtitle_item">Subtitle</string>
 </resources>

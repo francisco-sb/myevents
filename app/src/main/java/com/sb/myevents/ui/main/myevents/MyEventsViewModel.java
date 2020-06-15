@@ -1,17 +1,15 @@
 package com.sb.myevents.ui.main.myevents;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.sb.myevents.R;
-import com.sb.myevents.data.entities.Event;
 import com.sb.myevents.domain.repositories.EventRepository;
 import com.sb.myevents.domain.repositories.UserRepository;
 import com.sb.myevents.sys.components.DaggerRepositoryComponent;
 import com.sb.myevents.sys.util.ReactiveEvent;
 import com.sb.myevents.sys.util.ResourceProvider;
 import com.sb.myevents.ui.MainApp;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -31,6 +29,7 @@ public class MyEventsViewModel extends ViewModel {
     private ResourceProvider resourceProvider;
 
     ReactiveEvent<String> onSignOutAction;
+    MutableLiveData<Object> onEvents;
 
     public MyEventsViewModel() {
         DaggerRepositoryComponent.builder()
@@ -39,6 +38,7 @@ public class MyEventsViewModel extends ViewModel {
         resourceProvider = MainApp.utilComponent.getResourceProvider();
 
         onSignOutAction = new ReactiveEvent<>();
+        onEvents = new MutableLiveData<>();
     }
 
     void signOut() {
@@ -51,11 +51,13 @@ public class MyEventsViewModel extends ViewModel {
 
     //region:: REFERENCE METHODS
     private void onSignOut(Boolean result) {
-        if (result)
+        if (Boolean.TRUE.equals(result))
             onSignOutAction.postValue(resourceProvider.getString(R.string.session_finalized_message));
     }
 
-    private void onGetEvents(List<Event> events) {
+    private void onGetEvents(Object events) {
+        if (events != null)
+            onEvents.postValue(events);
     }
     //endregion
 }

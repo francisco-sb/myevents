@@ -16,10 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sb.myevents.R;
+import com.sb.myevents.data.entities.Event;
 import com.sb.myevents.sys.components.DaggerViewModelComponent;
 import com.sb.myevents.sys.modules.ContextModule;
 import com.sb.myevents.ui.main.MainActivity;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -60,6 +62,8 @@ public class MyEventsFragment extends Fragment {
 
         observeStreams();
 
+        viewModel.getEvents();
+
         return rootView;
     }
 
@@ -86,6 +90,7 @@ public class MyEventsFragment extends Fragment {
     //region:: PRIVATE METHODS
     private void observeStreams() {
         viewModel.onSignOutAction.observe(this, this::logout);
+        viewModel.onEvents.observe(getViewLifecycleOwner(), this::refreshEvents);
     }
     //endregion
 
@@ -95,6 +100,15 @@ public class MyEventsFragment extends Fragment {
 
         assert getActivity() != null;
         ((MainActivity) getActivity()).navigateTo(MainActivity.LOGIN); //NOSONAR
+    }
+
+    private void refreshEvents(Object events) {
+        if (events instanceof String) {
+            Toast.makeText(getContext(), (String) events, Toast.LENGTH_SHORT).show();
+        } else {
+            //noinspection unchecked
+            recyclerView.setAdapter(new EventAdapter((List<Event>) events));
+        }
     }
     //endregion
 }
