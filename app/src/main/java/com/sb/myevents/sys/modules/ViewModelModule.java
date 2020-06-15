@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.sb.myevents.ui.main.MainViewModel;
 import com.sb.myevents.ui.main.event.EventViewModel;
+import com.sb.myevents.ui.main.login.UserViewModel;
 import com.sb.myevents.ui.main.myevents.MyEventsViewModel;
 import com.sb.myevents.ui.main.login.LoginViewModel;
 
@@ -26,16 +27,24 @@ public class ViewModelModule {
         return ViewModelProviders.of(fragmentActivity).get(MainViewModel.class);
     }
 
+    @SuppressWarnings("WeakerAccess")
     @Provides
     public LoginViewModel provideLoginViewModel(Fragment fragment) {
         return ViewModelProviders.of(fragment).get(LoginViewModel.class);
     }
+    @SuppressWarnings("WeakerAccess")
+    @Provides
+    public UserViewModel provideUserViewModel(Fragment fragment) {
+        return ViewModelProviders.of(fragment).get(UserViewModel.class);
+    }
 
+    @SuppressWarnings("WeakerAccess")
     @Provides
     public MyEventsViewModel provideMyEventsViewModel(Fragment fragment) {
         return ViewModelProviders.of(fragment).get(MyEventsViewModel.class);
     }
 
+    @SuppressWarnings("WeakerAccess")
     @Provides
     public EventViewModel provideEventViewModel(Fragment fragment) {
         return ViewModelProviders.of(fragment).get(EventViewModel.class);

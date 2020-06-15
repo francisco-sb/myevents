@@ -8,10 +8,8 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.sb.myevents.ui.main.login.LoginFragment"
-        android:label="LoginFragment" >
-        <action
-            android:id="@+id/action_loginFragment_to_myEventsFragment"
-            app:destination="@id/myEventsFragment" />
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_userFragment"
             app:destination="@id/userFragment" />
@@ -30,11 +28,13 @@
     <fragment
         android:id="@+id/userFragment"
         android:name="com.sb.myevents.ui.main.login.UserFragment"
-        android:label="UserFragment" />
+        android:label="UserFragment"
+        tools:layout="@layout/user_fragment"/>
 
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.sb.myevents.ui.main.event.EventFragment"
-        android:label="EventFragment" />
+        android:label="EventFragment"
+        tools:layout="@layout/event_fragment"/>
 
 </navigation>

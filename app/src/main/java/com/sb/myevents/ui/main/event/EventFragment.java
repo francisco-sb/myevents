@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import com.sb.myevents.R;
 import com.sb.myevents.sys.components.DaggerViewModelComponent;
 import com.sb.myevents.sys.modules.ContextModule;
+import com.sb.myevents.ui.main.MainActivity;
+
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -39,7 +42,22 @@ public class EventFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.event_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.event_fragment, container, false);
+
+        Objects.requireNonNull(((MainActivity) requireActivity()).getSupportActionBar()).show();
+
+        observeStreams();
+
+        return rootView;
     }
+
+    //region:: PRIVATE METHODS
+    private void observeStreams() {
+
+    }
+    //endregion
+
+    //region:: REFERENCE METHODS
+    //endregion
 
 }
